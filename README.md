@@ -11,20 +11,20 @@ Interactive Elements: Engage with various objects within the virtual environment
 Technologies Used
 A-Frame: The primary framework for building the 3D VR environment.
 HTML5: For structuring the content of the website.
-Getting Started
+
 
 ## Usage
 Navigating the VR Space: Use your mouse or VR headset controls to move around and explore the 3D scene.
-Contributing
+
+## Contributing
 Contributions to improve the Bloxy website are welcome. If you have suggestions or would like to add features, feel free to open an issue or submit a pull request.
 
 ## Acknowledgements
 Hack Club: For the Hackaccino grant and support.
 A-Frame: For providing the framework and the original Minecraft demo that inspired this project.
-Contact
 
+## Contact
 For any questions or feedback, please reach out to aayan.s.rahman@gmail.com
-
 Enjoy exploring Bloxy as much as I enjoyed my free frappuccino!
 
 

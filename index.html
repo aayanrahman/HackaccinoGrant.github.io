@@ -13,12 +13,13 @@
     <a-assets>
       <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
       <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
-      <a-mixin id="voxel" geometry="primitive: box; height: 0.5; width: 0.5; depth: 0.5" material="shader: standard" random-color snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"></a-mixin>
+      <a-mixin id="voxel" geometry="primitive: box; height: 0.5; width: 0.5; depth: 0.5" material="shader: flat" snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"></a-mixin>
     </a-assets>
 
     <a-plane static-body id="ground" src="#groundTexture" rotation="-90 0 0" scale="150 150 150"></a-plane>
 
     <a-sky id="background" src="#skyTexture" theta-length="90" radius="30"></a-sky>
+
     <!-- Player with Hands -->
     <a-entity id="player">
       <a-entity id="teleHand" hand-controls="hand: left" blink-controls="collisionEntities: [mixin='voxel'], #ground"></a-entity>
@@ -29,10 +30,10 @@
     </a-entity>
 
     <!-- Initial Voxels -->
-    <a-entity mixin="voxel" position="-1 0.25 -2" static-body></a-entity>
-    <a-entity mixin="voxel" position="0 0.25 -2" static-body></a-entity>
-    <a-entity mixin="voxel" position="0 1.25 -2" static-body></a-entity>
-    <a-entity mixin="voxel" position="1 0.25 -2" static-body></a-entity>
+    <a-entity mixin="voxel" position="-1 0.25 -2" static-body random-color></a-entity>
+    <a-entity mixin="voxel" position="0 0.25 -2" static-body random-color></a-entity>
+    <a-entity mixin="voxel" position="0 1.25 -2" static-body random-color></a-entity>
+    <a-entity mixin="voxel" position="1 0.25 -2" static-body random-color></a-entity>
   </a-scene>
 
   <!-- Custom Components -->
@@ -41,7 +42,8 @@
     AFRAME.registerComponent('random-color', {
       dependencies: ['material'],
       init: function () {
-        this.el.setAttribute('material', 'color', getRandomColor());
+        const color = getRandomColor();
+        this.el.setAttribute('material', 'color', color);
       }
     });
 
@@ -82,6 +84,7 @@
 
           const newVoxel = document.createElement('a-entity');
           newVoxel.setAttribute('mixin', this.data.mixin);
+          newVoxel.setAttribute('random-color', ''); // Add random-color component
 
           const normal = intersection.face.normal.clone().multiplyScalar(0.25);
           const position = intersection.point.add(normal);
@@ -95,4 +98,3 @@
   </script>
 </body>
 </html>
-
